@@ -8,13 +8,13 @@ import Button from "@/Components/Button/Button";
 import Footer from "@/Components/Footer/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({
+export default function Car({
   header_info,
   home_info,
   cars_info,
   footer_info,
+  carId,
 }) {
-  console.log(footer_info);
   const banner_info = home_info.data.attributes.Banner_principal;
   const que_es_renting = home_info.data.attributes.Que_es_renting;
   const Estrena_Carro = home_info.data.attributes.Estrena_Carro;
@@ -22,6 +22,14 @@ export default function Home({
   const cars = cars_info.data;
   const banner_help = home_info.data.attributes.Baner_ayuda;
   const footer = footer_info.data.attributes;
+
+  //idCard
+
+  const car_filter = cars.filter((car) => car.id == carId)[0];
+  console.log("dasda", cars);
+
+  console.log("dasda", car_filter);
+  console.log("dasda", carId);
 
   return (
     <>
@@ -32,61 +40,19 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header content={header_info.data.attributes}></Header>
-      <div className={styles.banner_show}>
+      <div>
         <img
-          src={banner_info.Imagen_Banner.data[0].attributes.url}
-          alt="MotorysaBanner"
+          className={styles.car_image}
+          src={car_filter.attributes.Imagenes_carro.data[0].attributes.url}
+          alt={"Motorysacar" + String(carId)}
           layout="fill"
           objectfit="cover"
         />
-        <div className={styles.banner_text}>
-          <div
-            className={styles.inner_container}
-            style={{ whiteSpace: "pre-wrap" }}
-          >
-            {banner_info.Text_Banner}
-          </div>
-        </div>
       </div>
-      <div className={styles.container_over}>
-        <div className={styles.container_renting}>
-          <div className={styles.title_renting}>
-            {que_es_renting.Titulo_label}{" "}
-          </div>
-          <div className={styles.description_renting}>
-            {que_es_renting.Descripcion}{" "}
-          </div>
-        </div>
-      </div>
-      <div className={styles.renting_new}>
-        <div className={styles.inner_renting_new}>
-          <div className={styles.info_renting_new}>
-            <div
-              className={styles.title_renting_new}
-              dangerouslySetInnerHTML={{ __html: Estrena_Carro.Titulo }}
-            ></div>
-            <div className={styles.info_renting_description}>
-              {Estrena_Carro.Descripcion_renting}
-            </div>
-            <div
-              className={styles.info_renting_advantages}
-              dangerouslySetInnerHTML={{
-                __html: Estrena_Carro.Ventajas_renting,
-              }}
-            ></div>
-            <div className={styles.tyc}>{TyC.Texto} </div>
-          </div>
-          <img
-            src={Estrena_Carro.Imagen_ventajas.data.attributes.url}
-            alt="MotorysaRenting"
-            layout="fill"
-            objectfit="cover"
-          />
-        </div>
-      </div>
+
       <div className={styles.banner_cars}>
         {cars.map((car) => (
-          <CarCard id={car.id} car={car.attributes} />
+          <CarCard car={car.attributes} />
         ))}
       </div>
       <div className={styles.help_renting}>
@@ -131,8 +97,9 @@ export const getServerSideProps = async (pageContext) => {
   const home_info = await apiResponseHome.json();
 
   // Peticion de vehiculos
+
   const apiResponseCar = await fetch(
-    `${process.env.NEXT_PUBLIC_API_CMS_URL}cars?populate[Especificaciones][populate]=Icono&populate[Imagenes_carro]=*`
+    `${process.env.NEXT_PUBLIC_API_CMS_URL}cars/?populate[Especificaciones][populate]=Icono&populate[Imagenes_carro]=*`
   );
   const cars_info = await apiResponseCar.json();
 
@@ -141,12 +108,18 @@ export const getServerSideProps = async (pageContext) => {
     `${process.env.NEXT_PUBLIC_API_CMS_URL}footer?populate=*`
   );
   const footer_info = await apiResponseFooter.json();
+
+  const { query } = pageContext;
+
+  // Extract the "id" parameter
+  const { id } = query;
   return {
     props: {
       header_info,
       home_info,
       cars_info,
       footer_info,
+      carId: id,
     },
   };
 };
