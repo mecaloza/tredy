@@ -40,14 +40,55 @@ export default function Car({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header content={header_info.data.attributes}></Header>
-      <div>
-        <img
-          className={styles.car_image}
-          src={car_filter.attributes.Imagenes_carro.data[0].attributes.url}
-          alt={"Motorysacar" + String(carId)}
-          layout="fill"
-          objectfit="cover"
-        />
+      <div className={styles.car_show}>
+        <div className={styles.container_image}>
+          <img
+            className={styles.car_image}
+            src={car_filter.attributes.Imagenes_carro.data[0].attributes.url}
+            alt={"Motorysacar" + String(carId)}
+            layout="fill"
+            objectfit="cover"
+          />
+          <div className={styles.carrusel_pic}>
+            {car_filter.attributes.Imagenes_carro.data.map((car, index) => (
+              <img
+                className={styles.image_carrusel}
+                src={car.attributes.url}
+                alt={"Motorysacar" + String(carId) + String(index)}
+                layout="fill"
+                objectfit="cover"
+              />
+            ))}
+          </div>
+        </div>
+        <div className={styles.container_info}>
+          <div className={styles.title_car}>{car_filter.attributes.Nombre}</div>
+          <div className={styles.espec_container}>
+            {car_filter.attributes.Especificaciones.map((car_espec) => (
+              <div className={styles.espec_containerc}>
+                <img src={car_espec.Icono.data.attributes.url} alt="" />
+                <div className={styles.espec_title}>
+                  {car_espec.Titulo_Espec}
+                </div>
+                <div className={styles.espec_sep}>:</div>
+                <div className={styles.espec_description}>
+                  {car_espec.Value_espec}
+                </div>
+              </div>
+            ))}
+            <div className={styles.container_button}>
+              <Button
+                text={"Descargar ficha técnica"}
+                width="418px"
+                height="60px"
+                background="#4B5563"
+                color="#fff"
+                fontSize="20px"
+                srcIcon="/download.svg"
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className={styles.banner_cars}>

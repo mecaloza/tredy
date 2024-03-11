@@ -7,6 +7,8 @@ export default function Button({
   borderColor = "transparent",
   callback,
   color = "#667085",
+  fontSize = "16px",
+  srcIcon,
 }) {
   return (
     <div
@@ -19,9 +21,13 @@ export default function Button({
       }}
       onClick={callback === undefined ? null : callback}
     >
-      <div className={styles.text_button} style={{ color: color }}>
+      <div
+        className={styles.text_button}
+        style={{ color: color, fontSize: fontSize }}
+      >
         {text}{" "}
       </div>
+      {srcIcon && <img src={srcIcon} alt="" style={{ marginLeft: "10px" }} />}
     </div>
   );
 }

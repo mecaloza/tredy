@@ -198,6 +198,94 @@
   width: 80%;
   margin-bottom: 30px;
 }
+
+.image_carrusel {
+  width: 93px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.car_show {
+  width: 100%;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+}
+.container_info {
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.container_info {
+  width: 30%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.title_car {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: "Hind-Bold";
+  color: #111827;
+  letter-spacing: -2%;
+  line-height: 44px;
+  margin-top: 40px;
+}
+
+.espec_container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.espec_containerc {
+  width: 50%;
+  height: 18px;
+  background-color: #f3f4f6;
+  border-radius: 9px;
+  margin-top: 12px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+}
+.espec_title {
+  font-family: "Hind-Regular";
+  font-size: 12px;
+  color: #667085;
+  margin-left: 10px;
+}
+
+.container_button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.espec_description {
+  font-family: "Hind-Regular";
+  font-size: 12px;
+  color: #667085;
+}
+
+.espec_sep {
+  font-family: "Hind-Regular";
+  font-size: 12px;
+  color: #667085;
+  margin-right: 5px;
+}
+
+.carrusel_pic {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .description {
   display: inherit;
   justify-content: inherit;
