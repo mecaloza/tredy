@@ -106,6 +106,21 @@
   letter-spacing: -2%;
   line-height: 44px;
 }
+
+.title_renting_benefit {
+  width: 80%;
+  font-size: 36px;
+  font-weight: 700;
+  font-family: "Hind-Bold";
+  color: #111827;
+  letter-spacing: -2%;
+  line-height: 44px;
+  margin-top: 40px;
+}
+.title_renting_benefit span {
+  background-color: #d1d5db;
+  padding: 5px;
+}
 .title_renting_new span {
   background-color: #d1d5db;
   padding: 5px;
@@ -120,6 +135,22 @@
   margin-top: 24px;
 }
 
+.info_renting_benefits {
+  width: 90%;
+  height: 76px;
+  color: #6b7280;
+  font-family: "Hind-Regular";
+  margin-top: 40px;
+}
+
+.info_renting_benefits p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d1d5db;
+  margin-top: 10px;
+}
 .info_renting_advantages {
   width: 100%;
   height: 76px;
@@ -284,6 +315,44 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.banner_benefits {
+  width: 100%;
+  height: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.benefits_container_r {
+  width: 50%;
+  height: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(16, 24, 40, 0.06),
+    0 6px 20px 0 rgba(16, 24, 40, 0.1);
+}
+.benefits_container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container_benefits {
+  width: 80%;
+  height: 622px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
 }
 
 .description {

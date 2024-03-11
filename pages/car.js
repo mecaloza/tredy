@@ -14,6 +14,7 @@ export default function Car({
   cars_info,
   footer_info,
   carId,
+  benefits_info,
 }) {
   const banner_info = home_info.data.attributes.Banner_principal;
   const que_es_renting = home_info.data.attributes.Que_es_renting;
@@ -22,14 +23,12 @@ export default function Car({
   const cars = cars_info.data;
   const banner_help = home_info.data.attributes.Baner_ayuda;
   const footer = footer_info.data.attributes;
+  const benefits = benefits_info.data.attributes;
 
   //idCard
 
   const car_filter = cars.filter((car) => car.id == carId)[0];
-  console.log("dasda", cars);
-
-  console.log("dasda", car_filter);
-  console.log("dasda", carId);
+  console.log("dasda", benefits_info);
 
   return (
     <>
@@ -87,6 +86,26 @@ export default function Car({
                 srcIcon="/download.svg"
               />
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.banner_benefits}>
+        <div className={styles.container_benefits}>
+          <div className={styles.benefits_container}>
+            <div
+              className={styles.title_renting_benefit}
+              dangerouslySetInnerHTML={{ __html: benefits.Titulo }}
+            ></div>
+          </div>
+
+          <div className={styles.benefits_container_r}>
+            <div
+              className={styles.info_renting_benefits}
+              dangerouslySetInnerHTML={{
+                __html: benefits.Lista,
+              }}
+            ></div>
           </div>
         </div>
       </div>
@@ -150,6 +169,12 @@ export const getServerSideProps = async (pageContext) => {
   );
   const footer_info = await apiResponseFooter.json();
 
+  //benerifiecos
+  const apiResponseBenefits = await fetch(
+    `${process.env.NEXT_PUBLIC_API_CMS_URL}beneficios-renting?populate=*`
+  );
+  const benefits_info = await apiResponseBenefits.json();
+
   const { query } = pageContext;
 
   // Extract the "id" parameter
@@ -161,6 +186,7 @@ export const getServerSideProps = async (pageContext) => {
       cars_info,
       footer_info,
       carId: id,
+      benefits_info,
     },
   };
 };
