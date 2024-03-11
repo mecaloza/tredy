@@ -475,78 +475,54 @@
 
 /* Mobile */
 @media (max-width: 700px) {
-  .content {
-    padding: 4rem;
-  }
-
-  .grid {
-    grid-template-columns: 1fr;
-    margin-bottom: 120px;
-    max-width: 320px;
-    text-align: center;
-  }
-
-  .card {
-    padding: 1rem 2.5rem;
-  }
-
-  .card h2 {
-    margin-bottom: 0.5rem;
-  }
-
-  .center {
-    padding: 8rem 0 6rem;
-  }
-
-  .center::before {
-    transform: none;
-    height: 300px;
-  }
-
-  .description {
-    font-size: 0.8rem;
-  }
-
-  .description a {
-    padding: 1rem;
-  }
-
-  .description p,
-  .description div {
-    display: flex;
-    justify-content: center;
-    position: fixed;
+  .banner_show {
     width: 100%;
+    height: 508px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+      to right,
+      rgba(209, 213, 219, 1),
+      rgba(209, 213, 219, 0)
+    );
   }
 
-  .description p {
+  .banner_text {
+    display: flex;
     align-items: center;
-    inset: 0 0 auto;
-    padding: 2rem 1rem 1.4rem;
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
-    background-clip: padding-box;
-    backdrop-filter: blur(24px);
+    justify-content: center;
+    width: 100%;
+    line-height: 38px;
+    letter-spacing: 2%;
+    margin-top: 36px;
   }
-
-  .description div {
-    align-items: flex-end;
-    pointer-events: none;
-    inset: auto 0 0;
-    padding: 2rem;
-    height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
-    z-index: 1;
+  .inner_container {
+    width: 332px;
+    height: 114px;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: "Hind-Bold";
+    color: #111827;
+  }
+  .container_renting {
+    width: 80%;
+    height: 612px;
+    background-color: #030712;
+    border-radius: 12px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .title_renting {
+    font-size: 36px;
+    font-weight: 700;
+    font-family: "Hind-Bold";
+    color: #ffffff;
+    letter-spacing: -2%;
+    line-height: 44px;
+    text-align: center;
   }
 }
 
